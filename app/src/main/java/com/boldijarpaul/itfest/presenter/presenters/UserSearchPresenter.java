@@ -11,6 +11,9 @@ import com.boldijarpaul.itfest.presenter.base.RxPresenter;
 import com.boldijarpaul.itfest.presenter.views.RegisterView;
 import com.boldijarpaul.itfest.presenter.views.SearchUserView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import rx.Observer;
@@ -37,16 +40,23 @@ public class UserSearchPresenter extends RxPresenter<SearchUserView> {
     public void getUsers(String userName, int age) {
 
 
-        String userQuery = "";
+        String userQuery = null;
         if (userName.trim().length() > 0) {
-            userQuery = "fullname,cs," + userQuery;
+            userQuery = "fullname,cs," + userName;
         }
-        String ageQuery = "";
+        String ageQuery = null;
         if (age > 0) {
-            ageQuery = "age,eq," + ageQuery;
+            ageQuery = "age,eq," + age;
         }
 
-        mUserService.getUsers(userQuery, ageQuery)
+        List<String> queries = new ArrayList<>();
+        if (ageQuery != null) queries.add(ageQuery);
+        if (userQuery != null) queries.add(userQuery);
+        String[] queryArray = new String[queries.size()];
+        for (int i = 0; i < queryArray.length; i++) {
+            queryArray[0] = queries.get(i);
+        }
+        mUserService.getUsers(queryArray)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<UserResponse>() {

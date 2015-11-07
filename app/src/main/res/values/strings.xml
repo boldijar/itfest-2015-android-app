@@ -30,6 +30,9 @@
     <string name="msg_register">Register</string>
     <string name="msg_nput_invalid">Invalid input</string>
     <string name="msg_search_user">Search user</string>
+    <string name="msg_age">Age</string>
+    <string name="msg_search_name">Name:</string>
+    <string name="msg_search_age">Age:</string>
 
 
 </resources>

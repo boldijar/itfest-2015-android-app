@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
     View mStats;
     @Bind(R.id.activity_main_register)
     View mRegister;
+    @Bind(R.id.toolbar_title)
+    View mTitleView;
+
     private LinearLayoutManager mLinearLayoutManager;
     private QuizAdapter mQuizAdapter;
 
@@ -100,6 +103,12 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
     @OnClick(R.id.activity_main_register)
     void register() {
         startActivity(new Intent(this, RegisterActivity.class));
+    }
+
+    @OnClick(R.id.toolbar_title)
+    void onClickToolbar() {
+        startActivity(new Intent(this, SearchUserActivity.class));
+
     }
 
     @OnClick(R.id.activity_main_stats)

@@ -35,7 +35,6 @@
                 fontPath="fonts/Black.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:letterSpacing="0.3"
                 android:textAllCaps="true"
                 android:textColor="@color/quizColor"
                 android:textSize="20sp"
@@ -47,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:letterSpacing="0.3"
                 android:textColor="@color/quizColor"
                 android:textSize="17sp"
                 tools:text="Difficulty: hard" />

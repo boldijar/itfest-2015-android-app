@@ -19,8 +19,8 @@ public interface UserService {
     );
 
 
-    @GET("/user")
-    Observable<UserResponse> getUsers(@Query("filter") String containsFilter,
-                                      @Query("filter") String ageFilter
+    @GET("/user?transform=1")
+    Observable<UserResponse> getUsers(@Query("filter") String... filters
+
     );
 }

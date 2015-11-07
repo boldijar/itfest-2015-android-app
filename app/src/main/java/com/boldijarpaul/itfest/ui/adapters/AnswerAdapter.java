@@ -13,6 +13,7 @@ import com.boldijarpaul.itfest.ui.viewholders.AnswerViewHolder;
 import com.boldijarpaul.itfest.ui.viewholders.QuizViewHolder;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -42,17 +43,34 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerViewHolder> {
         return viewHolder;
     }
 
+    private String getStringFromLong(long date) {
+        Calendar now = Calendar.getInstance();
+        now.setTimeInMillis(date);
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH) + 1; // Note: zero based!
+        int day = now.get(Calendar.DAY_OF_MONTH);
+        int hour = now.get(Calendar.HOUR_OF_DAY);
+        int minute = now.get(Calendar.MINUTE);
+        int second = now.get(Calendar.SECOND);
+        int millis = now.get(Calendar.MILLISECOND);
+
+        String result = String.format("%d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, minute, second);
+        return result;
+
+    }
+
     @Override
     public void onBindViewHolder(AnswerViewHolder holder, int position) {
         final Answer answer = answers.get(position);
         holder.difficulty.setText(mContext.getString(R.string.msg_difficulty) + answer.quiz.get(0).difficulty.toLowerCase());
         holder.name.setText(answer.quiz.get(0).name);
         holder.difficultyImage.setImageResource(getImageResourceFromAnswer(answer));
+        holder.date.setText(getStringFromLong(answer.date));
 
     }
 
     private int getImageResourceFromAnswer(Answer answer) {
-        if (answer.success==1) return R
+        if (answer.success == 1) return R
                 .drawable.ic_check;
         return R.drawable.ic_x;
     }

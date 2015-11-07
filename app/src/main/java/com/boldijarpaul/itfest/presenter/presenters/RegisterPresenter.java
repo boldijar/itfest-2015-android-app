@@ -1,15 +1,16 @@
 package com.boldijarpaul.itfest.presenter.presenters;
 
 import android.content.Context;
+import android.provider.Settings;
 
 import com.boldijarpaul.itfest.DaggerApp;
 import com.boldijarpaul.itfest.api.services.AnswersService;
-import com.boldijarpaul.itfest.api.services.QuizesService;
+import com.boldijarpaul.itfest.api.services.UserService;
 import com.boldijarpaul.itfest.data.models.Answer;
-import com.boldijarpaul.itfest.data.models.QuizResponse;
+import com.boldijarpaul.itfest.data.models.User;
 import com.boldijarpaul.itfest.presenter.base.RxPresenter;
 import com.boldijarpaul.itfest.presenter.views.AddAnswerView;
-import com.boldijarpaul.itfest.presenter.views.QuizesView;
+import com.boldijarpaul.itfest.presenter.views.RegisterView;
 
 import javax.inject.Inject;
 
@@ -20,19 +21,33 @@ import rx.schedulers.Schedulers;
 /**
  * Created by razvan on 10/27/15.
  */
-public class AddAnswerPresenter extends RxPresenter<AddAnswerView> {
+public class RegisterPresenter extends RxPresenter<RegisterView> {
 
     @Inject
-    AnswersService mAnswersService;
+    UserService mUserService;
 
-    public AddAnswerPresenter(AddAnswerView view, Context context) {
+    private Context mContext;
+
+    public RegisterPresenter(RegisterView view, Context context) {
         super(view);
+        mContext = context;
         DaggerApp.get(context).graph().inject(this);
     }
 
-    public void addAnswer(Answer answer) {
-        answer.date = System.currentTimeMillis();
-        mAnswersService.addAnswer(answer)
+    public String getUniquePsuedoID() {
+        return Settings.Secure.getString(mContext.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+    }
+
+    public void addUser(String fullName, int age) {
+
+        User user = new User();
+        user.fullName = fullName;
+        user.age = age;
+        user.deviceId = getUniquePsuedoID();
+
+
+        mUserService.addUser(user)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<String>() {
@@ -44,7 +59,6 @@ public class AddAnswerPresenter extends RxPresenter<AddAnswerView> {
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        getView().onError();
                     }
 
                     @Override

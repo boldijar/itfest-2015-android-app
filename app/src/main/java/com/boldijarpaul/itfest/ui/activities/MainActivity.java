@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
     SwipeRefreshLayout mSwipeRefreshLayout;
     @Bind(R.id.activity_main_stats)
     View mStats;
-
+    @Bind(R.id.activity_main_register)
+    View mRegister;
     private LinearLayoutManager mLinearLayoutManager;
     private QuizAdapter mQuizAdapter;
 
@@ -94,6 +95,11 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
         mQuizAdapter.clear();
         mQuizesPresenter.resetQuizes();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @OnClick(R.id.activity_main_register)
+    void register() {
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
     @OnClick(R.id.activity_main_stats)

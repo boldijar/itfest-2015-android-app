@@ -3,6 +3,7 @@ package com.boldijarpaul.itfest.api;
 import com.boldijarpaul.itfest.BuildConfig;
 import com.boldijarpaul.itfest.api.services.AnswersService;
 import com.boldijarpaul.itfest.api.services.QuizesService;
+import com.boldijarpaul.itfest.api.services.UserService;
 import com.boldijarpaul.itfest.helper.QuizHelper;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
@@ -95,7 +96,11 @@ public class ApiModule {
     AnswersService provideAnswersService(RestAdapter restAdapter) {
         return restAdapter.create(AnswersService.class);
     }
-
+    @Provides
+    @Singleton
+    UserService provideUserService(RestAdapter restAdapter) {
+        return restAdapter.create(UserService.class);
+    }
     @Provides
     @Singleton
     QuizHelper provideQuizHelper() {

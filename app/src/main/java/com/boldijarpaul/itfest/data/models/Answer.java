@@ -17,7 +17,8 @@ public class Answer {
     public long quizId;
     @SerializedName("success")
     public int success;
-
+    @SerializedName("date")
+    public long date;
     @SerializedName("quiz")
     public List<Quiz> quiz;
 }

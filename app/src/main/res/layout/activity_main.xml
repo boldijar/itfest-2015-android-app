@@ -32,6 +32,18 @@
                 tools:ignore="MissingPrefix" />
 
             <ImageView
+                android:id="@+id/activity_main_register"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="start"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/selector_rectangle"
+                android:clickable="true"
+                android:padding="12dp"
+                android:src="@drawable/ic_register" />
+
+            <ImageView
                 android:id="@+id/activity_main_stats"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="?attr/actionBarSize"

@@ -32,9 +32,12 @@ import butterknife.OnClick;
 import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
+public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnInitListener, ViewPager.OnPageChangeListener {
 
-
+    @Bind(R.id.activity_quiz_left)
+    View mLeft;
+    @Bind(R.id.activity_quiz_right)
+    View mRight;
     @Bind(R.id.activity_quiz_question)
     TextView mQuestion;
     @Bind(R.id.activity_quiz_viewpager)
@@ -77,6 +80,9 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
         mAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(), mImages, this);
         mQuestion.setText(mQuiz.question);
         mPager.setAdapter(mAdapter);
+        mPager.setOffscreenPageLimit(7);
+        mPager.setOnPageChangeListener(this);
+        mPager.setCurrentItem(0, true);
     }
 
     @OnClick(R.id.activity_quiz_save)
@@ -88,6 +94,20 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
         startActivity(intent);
         finish();
 
+    }
+
+    @OnClick(R.id.activity_quiz_left)
+    void leftClicked() {
+        if (mPager.getCurrentItem() > 0) {
+            mPager.setCurrentItem(mPager.getCurrentItem() - 1, true);
+        }
+    }
+
+    @OnClick(R.id.activity_quiz_right)
+    void rightClicked() {
+        if (mPager.getCurrentItem() < mImages.size() - 1) {
+            mPager.setCurrentItem(mPager.getCurrentItem() + 1, true);
+        }
     }
 
     @Override
@@ -115,5 +135,21 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
             mTextToSpeech.setSpeechRate(0.6f);
             mTextToSpeech.speak(mQuiz.question, TextToSpeech.QUEUE_FLUSH, null);
         }
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        mLeft.setVisibility(position == 0 ? View.INVISIBLE : View.VISIBLE);
+        mRight.setVisibility(position == mImages.size() - 1 ? View.INVISIBLE : View.VISIBLE);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

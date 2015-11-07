@@ -26,6 +26,9 @@
     <string name="msg_quiz_result">Quiz result</string>
     <string name="msg_app_title">ITFest Learn App</string>
     <string name="msg_answer_stats">Answer stats</string>
+    <string name="msg_fullname">Full name</string>
+    <string name="msg_register">Register</string>
+    <string name="msg_nput_invalid">Invalid input</string>
 
 
 </resources>

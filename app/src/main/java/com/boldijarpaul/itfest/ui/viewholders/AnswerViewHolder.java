@@ -14,11 +14,13 @@ public class AnswerViewHolder extends RecyclerView.ViewHolder {
     public TextView name;
     public TextView difficulty;
     public ImageView difficultyImage;
+    public TextView date;
 
     public AnswerViewHolder(View itemView) {
         super(itemView);
         name = (TextView) itemView.findViewById(R.id.item_answer_name);
         difficulty = (TextView) itemView.findViewById(R.id.item_answer_difficulty);
+        date = (TextView) itemView.findViewById(R.id.item_answer_date);
         difficultyImage = (ImageView) itemView.findViewById(R.id.item_answer_difficulty_image);
     }
 }

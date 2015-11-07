@@ -39,7 +39,14 @@
         <activity
             android:name=".ui.activities.AnswersActivity"
             android:label="@string/msg_answer_stats"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.RegisterActivity"
+            android:label="@string/msg_register"
+            android:screenOrientation="portrait">
+
+
+        </activity>
     </application>
 
 </manifest>

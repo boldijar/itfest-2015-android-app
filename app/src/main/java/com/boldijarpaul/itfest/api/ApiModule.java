@@ -2,6 +2,7 @@ package com.boldijarpaul.itfest.api;
 
 import com.boldijarpaul.itfest.BuildConfig;
 import com.boldijarpaul.itfest.api.services.QuizesService;
+import com.boldijarpaul.itfest.helper.QuizHelper;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -20,7 +21,8 @@ import retrofit.converter.GsonConverter;
 @Module
 public class ApiModule {
 
-    private static final String API_APP_DATA_ENDPOINT = "http://192.168.0.34/api/index.php/";
+    public static final String IP = "192.168.0.34";
+    private static final String API_APP_DATA_ENDPOINT = "http://" + IP + "/api/index.php/";
 
 
     /**
@@ -81,11 +83,16 @@ public class ApiModule {
     }
 
 
-
     @Provides
     @Singleton
     QuizesService provideQuizesService(RestAdapter restAdapter) {
         return restAdapter.create(QuizesService.class);
+    }
+
+    @Provides
+    @Singleton
+    QuizHelper provideQuizHelper() {
+        return new QuizHelper();
     }
 
 }

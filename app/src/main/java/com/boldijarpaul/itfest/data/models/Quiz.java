@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by Browsing on 11/7/2015.
  */
-public class Quiz implements Serializable {
+public class Quiz implements Serializable{
 
     @SerializedName("id")
     public long id;

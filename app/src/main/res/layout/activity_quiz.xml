@@ -14,31 +14,52 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/activity_quiz_question"
-            fontPath="fonts/Regular.ttf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="3dp"
-            android:letterSpacing="0.3"
-            android:textColor="@color/quizColor"
-            android:textSize="17sp"
-            tools:text="Pick the image which represents an apple!\nThe image has some green colors." />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/activity_quiz_viewpager"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorAccent" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_quiz_question"
+                fontPath="fonts/Regular.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/quizColor"
+                android:textSize="20sp"
+                tools:text="Pick the image which represents an apple!\nThe image has some green colors." />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/activity_quiz_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/activity_quiz_save"
+                fontPath="fonts/Black.ttf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_rectangle"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="10dp"
+                android:text="@string/msg_save"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

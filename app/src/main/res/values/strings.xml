@@ -29,6 +29,7 @@
     <string name="msg_fullname">Full name</string>
     <string name="msg_register">Register</string>
     <string name="msg_nput_invalid">Invalid input</string>
+    <string name="msg_search_user">Search user</string>
 
 
 </resources>

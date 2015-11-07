@@ -43,10 +43,11 @@
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:label="@string/msg_register"
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.activities.SearchUserActivity"
+            android:label="@string/msg_search_user"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

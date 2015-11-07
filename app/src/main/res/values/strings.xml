@@ -7,6 +7,10 @@
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_splash">Learn App</string>
+    <string name="msg_difficulty">"Difficulty: "</string>
+    <string name="cat_easy">Easy</string>
+    <string name="cat_medium">Medium</string>
+    <string name="cat_hard">Hard</string>
 
 
 </resources>

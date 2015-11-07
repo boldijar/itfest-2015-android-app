@@ -1,8 +1,7 @@
 package com.boldijarpaul.itfest.api;
 
 import com.boldijarpaul.itfest.BuildConfig;
-import com.boldijarpaul.itfest.api.services.EventService;
-import com.boldijarpaul.itfest.api.services.MovieService;
+import com.boldijarpaul.itfest.api.services.QuizesService;
 import com.google.gson.Gson;
 import com.squareup.okhttp.OkHttpClient;
 
@@ -21,7 +20,7 @@ import retrofit.converter.GsonConverter;
 @Module
 public class ApiModule {
 
-    private static final String API_APP_DATA_ENDPOINT = "http://192.168.43.88/api/index.php/";
+    private static final String API_APP_DATA_ENDPOINT = "http://192.168.0.34/api/index.php/";
 
 
     /**
@@ -81,24 +80,12 @@ public class ApiModule {
                 .build();
     }
 
-    // TODO provide service for api calls
 
-    /**
-     * Provides the EventService dependency for API calls related to events
-     *
-     * @param restAdapter The RestAdapter which will create the service
-     * @return The application's EventService
-     */
-    @Provides
-    @Singleton
-    EventService provideEventService(RestAdapter restAdapter) {
-        return restAdapter.create(EventService.class);
-    }
 
     @Provides
     @Singleton
-    MovieService provideMovieService(RestAdapter restAdapter) {
-        return restAdapter.create(MovieService.class);
+    QuizesService provideQuizesService(RestAdapter restAdapter) {
+        return restAdapter.create(QuizesService.class);
     }
 
 }

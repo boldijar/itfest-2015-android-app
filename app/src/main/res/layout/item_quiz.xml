@@ -55,6 +55,7 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/item_quiz_play"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"

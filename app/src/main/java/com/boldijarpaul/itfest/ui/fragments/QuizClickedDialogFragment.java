@@ -2,6 +2,7 @@ package com.boldijarpaul.itfest.ui.fragments;
 
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.speech.tts.TextToSpeech;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.boldijarpaul.itfest.R;
 import com.boldijarpaul.itfest.data.models.Quiz;
+import com.boldijarpaul.itfest.ui.activities.QuizActivity;
 
 import java.util.Locale;
 
@@ -52,6 +54,10 @@ public class QuizClickedDialogFragment extends DialogFragment implements TextToS
 
     @OnClick(R.id.fragment_quiz_clicked_dialog_yes)
     void yesClicked() {
+        Intent intent = new Intent(getActivity(), QuizActivity.class);
+        intent.putExtra(QuizActivity.KEY_QUIZ, getQuiz());
+        startActivity(intent);
+        dismiss();
 
     }
 
@@ -79,8 +85,13 @@ public class QuizClickedDialogFragment extends DialogFragment implements TextToS
     }
 
 
+    private Quiz getQuiz() {
+        return (Quiz) getArguments().getSerializable(KEY_QUIZ);
+
+    }
+
     private String createMessage() {
-        Quiz quiz = (Quiz) getArguments().getSerializable(KEY_QUIZ);
+        Quiz quiz = getQuiz();
         String result = "";
         result += getActivity().getString(R.string.msg_quiz_about) + quiz.about + ".";
         result += "\n";

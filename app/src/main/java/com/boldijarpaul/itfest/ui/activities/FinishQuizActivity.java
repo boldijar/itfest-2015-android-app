@@ -2,6 +2,7 @@ package com.boldijarpaul.itfest.ui.activities;
 
 import android.content.Context;
 import android.os.Build;
+import android.provider.Settings;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,22 +65,15 @@ public class FinishQuizActivity extends AppCompatActivity implements TextToSpeec
     private void sendAnswerToServer() {
         Answer answer = new Answer();
         answer.quizId = mQuiz.id;
-        answer.success = goodAnswer();
+        answer.success = goodAnswer() ? 1 : 0;
         answer.deviceId = getUniquePsuedoID();
 
         mPresenter.addAnswer(answer);
     }
 
-    public static String getUniquePsuedoID() {
-        String m_szDevIDShort = "35" + (Build.BOARD.length() % 10) + (Build.BRAND.length() % 10) + (Build.CPU_ABI.length() % 10) + (Build.DEVICE.length() % 10) + (Build.MANUFACTURER.length() % 10) + (Build.MODEL.length() % 10) + (Build.PRODUCT.length() % 10);
-        String serial = null;
-        try {
-            serial = android.os.Build.class.getField("SERIAL").get(null).toString();
-            return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
-        } catch (Exception exception) {
-            serial = "serial"; // some value
-        }
-        return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
+    public String getUniquePsuedoID() {
+        return Settings.Secure.getString(getContentResolver(),
+                Settings.Secure.ANDROID_ID);
     }
 
     private void setUpViews() {
@@ -98,7 +92,6 @@ public class FinishQuizActivity extends AppCompatActivity implements TextToSpeec
     private void setUpGoodAnswerViews() {
         mMessage.setText(getString(R.string.msg_congratulation_right));
         mImage.setImageResource(R.drawable.gold_blue);
-        mTextToSpeech.speak(getString(R.string.msg_congratulation_right), TextToSpeech.QUEUE_FLUSH, null);
 
     }
 
@@ -108,6 +101,12 @@ public class FinishQuizActivity extends AppCompatActivity implements TextToSpeec
         return result;
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mTextToSpeech.stop();
+    }
 
     private boolean goodAnswer() {
         return mQuiz.answer1.equals(mChoosenUrl);
@@ -123,7 +122,10 @@ public class FinishQuizActivity extends AppCompatActivity implements TextToSpeec
         if (status == TextToSpeech.SUCCESS) {
             mTextToSpeech.setLanguage(Locale.US);
             mTextToSpeech.setSpeechRate(0.6f);
-            mTextToSpeech.speak(getString(R.string.msg_wrong_play), TextToSpeech.QUEUE_FLUSH, null);
+            if (goodAnswer())
+                mTextToSpeech.speak(getString(R.string.msg_congratulation_right), TextToSpeech.QUEUE_FLUSH, null);
+            else
+                mTextToSpeech.speak(getString(R.string.msg_wrong_play), TextToSpeech.QUEUE_FLUSH, null);
 
         }
     }

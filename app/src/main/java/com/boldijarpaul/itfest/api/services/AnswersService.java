@@ -18,8 +18,9 @@ public interface AnswersService {
             @Body Answer answer
     );
 
-    @GET("/answer?transform=1")
-    Observable<AnswerResponse> getFilteredAnswers(@Query("filter") String filter
+    @GET("/answer,quiz?transform=1&order=id")
+    Observable<AnswerResponse> getFilteredAnswers(@Query("filter") String filter,
+                                                  @Query("page") String page
     );
 
 }

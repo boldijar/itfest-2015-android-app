@@ -40,7 +40,7 @@ public class ModelTests {
 
         assertEquals(answerResponse.answers.size(), 2);
         assertEquals(answerResponse.answers.get(0).deviceId, "ffffffff-ba0a-7ecc-ffff-ffffef");
-        assertEquals(answerResponse.answers.get(1).success, false);
+        assertEquals(answerResponse.answers.get(1).success, 1);
 
 
     }

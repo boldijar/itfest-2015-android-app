@@ -1,12 +1,14 @@
 package com.boldijarpaul.itfest.ui.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.boldijarpaul.itfest.R;
 import com.boldijarpaul.itfest.data.models.Quiz;
@@ -20,6 +22,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements QuizesView, QuizAdapter.ItemListener, EventsFeedRecyclerScrollListener.ScrollListener, SwipeRefreshLayout.OnRefreshListener {
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
     RecyclerView mRecyclerView;
     @Bind(R.id.activity_main_swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
+    @Bind(R.id.activity_main_stats)
+    View mStats;
 
     private LinearLayoutManager mLinearLayoutManager;
     private QuizAdapter mQuizAdapter;
@@ -89,5 +94,10 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
         mQuizAdapter.clear();
         mQuizesPresenter.resetQuizes();
         mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    @OnClick(R.id.activity_main_stats)
+    void statsClick() {
+        startActivity(new Intent(this, AnswersActivity.class));
     }
 }

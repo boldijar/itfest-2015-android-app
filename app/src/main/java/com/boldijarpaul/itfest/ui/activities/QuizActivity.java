@@ -90,6 +90,12 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mTextToSpeech.stop();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home)
             finish();

@@ -19,7 +19,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.SplashActivity"
-
             android:label="@string/title_activity_splash"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -31,13 +30,16 @@
         </activity>
         <activity
             android:name=".ui.activities.QuizActivity"
-
             android:label="@string/msg_quiz"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activities.FinishQuizActivity"
             android:label="@string/msg_quiz_result"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.activities.AnswersActivity"
+            android:label="@string/msg_answer_stats"
             android:screenOrientation="portrait"></activity>
     </application>
 

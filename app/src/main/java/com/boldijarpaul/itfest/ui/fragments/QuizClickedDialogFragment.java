@@ -19,6 +19,7 @@ import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,17 +49,16 @@ public class QuizClickedDialogFragment extends DialogFragment implements TextToS
         // Required empty public constructor
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        Dialog dialog = getDialog();
-//        if (dialog != null) {
-//            int width = ViewGroup.LayoutParams.MATCH_PARENT;
-//            int height = ViewGroup.LayoutParams.MATCH_PARENT;
-//            dialog.getWindow().setLayout(width, height);
-//        }
-//    }
 
+    @OnClick(R.id.fragment_quiz_clicked_dialog_yes)
+    void yesClicked() {
+
+    }
+
+    @OnClick(R.id.fragment_quiz_clicked_dialog_no)
+    void noClicked() {
+        dismiss();
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -78,20 +78,13 @@ public class QuizClickedDialogFragment extends DialogFragment implements TextToS
         return view;
     }
 
-//    public void onPause() {
-//        if (mTextToSpeech != null) {
-//            mTextToSpeech.stop();
-//            mTextToSpeech.shutdown();
-//        }
-//        super.onPause();
-//    }
 
     private String createMessage() {
         Quiz quiz = (Quiz) getArguments().getSerializable(KEY_QUIZ);
         String result = "";
-        result += getActivity().getString(R.string.msg_quiz_about) + quiz.about;
+        result += getActivity().getString(R.string.msg_quiz_about) + quiz.about + ".";
         result += "\n";
-        result += getActivity().getString(R.string.msg_quz_difficulty) + quiz.difficulty.toLowerCase();
+        result += getActivity().getString(R.string.msg_quz_difficulty) + quiz.difficulty.toLowerCase() + ".";
         result += "\n" + getActivity().getString(R.string.msg_please_click_left);
         return result;
     }

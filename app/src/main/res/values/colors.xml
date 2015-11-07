@@ -6,6 +6,9 @@
 
     <color name="splashBackgroundColor">@color/colorPrimary</color>
     <color name="quizColor">#5f7284</color>
+    <color name="yes_color">@color/colorPrimary</color>
+    <color name="no_color">@color/colorAccent</color>
+    <color name="yesno_color">#ffffff</color>
 
     <color name="eventItemBackground">@android:color/white</color>
     <color name="eventItemBorder">#59c6f1</color>

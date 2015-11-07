@@ -12,6 +12,7 @@ import com.boldijarpaul.itfest.data.models.Quiz;
 import com.boldijarpaul.itfest.presenter.presenters.QuizesPresenter;
 import com.boldijarpaul.itfest.presenter.views.QuizesView;
 import com.boldijarpaul.itfest.ui.adapters.QuizAdapter;
+import com.boldijarpaul.itfest.ui.fragments.QuizClickedDialogFragment;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
     private void setUpRecycler() {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mQuizAdapter = new QuizAdapter(this,this);
+        mQuizAdapter = new QuizAdapter(this, this);
         mRecyclerView.setAdapter(mQuizAdapter);
     }
 
@@ -68,6 +69,6 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
 
     @Override
     public void onPlayClicked(Quiz quiz) {
-
+        QuizClickedDialogFragment.newInstance(quiz).show(getSupportFragmentManager(), "tag");
     }
 }

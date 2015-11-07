@@ -2,10 +2,12 @@ package com.boldijarpaul.itfest.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Browsing on 11/7/2015.
  */
-public class Quiz {
+public class Quiz implements Serializable {
 
     @SerializedName("id")
     public long id;
@@ -13,6 +15,8 @@ public class Quiz {
     public String name;
     @SerializedName("difficulty")
     public String difficulty;
+    @SerializedName("about")
+    public String about;
     @SerializedName("question")
     public String question;
     @SerializedName("answer1")

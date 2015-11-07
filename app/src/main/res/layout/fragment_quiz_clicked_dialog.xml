@@ -1,10 +1,72 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.boldijarpaul.itfest.ui.fragments.QuizClickedDialogFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.boldijarpaul.itfest.ui.fragments.QuizClickedDialogFragment"
+    tools:ignore="MissingPrefix">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <TextView
+        android:id="@+id/fragment_quiz_clicked_dialog_message"
+        fontPath="fonts/Black.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:letterSpacing="0.3"
+        android:textColor="@color/quizColor"
+        android:textSize="20sp"
+        tools:text="This quiz is about blabla" />
 
-</FrameLayout>
+    <TextView
+        fontPath="fonts/Black.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Start test?"
+        android:textColor="@color/quizColor"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fragment_quiz_clicked_dialog_yes"
+            fontPath="fonts/Black.ttf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:background="@color/yes_color"
+            android:gravity="center"
+            android:padding="30dp"
+            android:text="@string/msg_yes"
+            android:textAllCaps="true"
+            android:textColor="@color/yesno_color"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/fragment_quiz_clicked_dialog_no"
+            fontPath="fonts/Black.ttf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:background="@color/no_color"
+            android:gravity="center"
+            android:padding="30dp"
+            android:text="@string/msg_no"
+            android:textAllCaps="true"
+            android:textColor="@color/yesno_color"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

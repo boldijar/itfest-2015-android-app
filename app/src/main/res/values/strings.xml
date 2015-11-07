@@ -20,6 +20,10 @@
     <string name="msg_please_click_left">If you want to start the test please click on the left side, where it says \'YES\'.</string>
     <string name="msg_quiz">Quiz</string>
     <string name="msg_save">Save</string>
+    <string name="msg_congratulation_right">Congratulations! You were right!</string>
+    <string name="msg_wrong">Oops! You did not guessed the answer! The correct answer was: </string>
+    <string name="msg_wrong_play">Oops! You did not guessed the answer! Be more careful next time!</string>
+    <string name="msg_quiz_result">Quiz result</string>
 
 
 </resources>

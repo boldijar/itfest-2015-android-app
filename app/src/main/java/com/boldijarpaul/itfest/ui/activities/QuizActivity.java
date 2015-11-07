@@ -1,6 +1,8 @@
 package com.boldijarpaul.itfest.ui.activities;
 
 import android.content.Context;
+import android.content.Intent;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -8,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.boldijarpaul.itfest.DaggerApp;
@@ -16,13 +19,17 @@ import com.boldijarpaul.itfest.data.models.Quiz;
 import com.boldijarpaul.itfest.helper.QuizHelper;
 import com.boldijarpaul.itfest.ui.adapters.ImageFragmentPagerAdapter;
 
+import java.util.List;
+import java.util.Locale;
+
 import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
     @Bind(R.id.activity_quiz_toolbar)
     Toolbar mToolbar;
@@ -30,13 +37,18 @@ public class QuizActivity extends AppCompatActivity {
     TextView mQuestion;
     @Bind(R.id.activity_quiz_viewpager)
     ViewPager mPager;
+    @Bind(R.id.activity_quiz_save)
+    View mSave;
+
 
     private Quiz mQuiz;
     public static String KEY_QUIZ = "KEYZUIQ";
+    private TextToSpeech mTextToSpeech;
 
     @Inject
     QuizHelper mQuizHelper;
     private FragmentPagerAdapter mAdapter;
+    private List<String> mImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +56,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         DaggerApp.get(this).graph().inject(this);
+        mTextToSpeech = new TextToSpeech(this, this);
 
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
@@ -56,12 +69,25 @@ public class QuizActivity extends AppCompatActivity {
 
 
         setUpViews();
+        mTextToSpeech.speak(mQuiz.question, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private void setUpViews() {
-        mAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(), mQuizHelper.quizToImagesArray(mQuiz));
+        mImages = mQuizHelper.quizToImagesArray(mQuiz);
+        mAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(), mImages);
         mQuestion.setText(mQuiz.question);
         mPager.setAdapter(mAdapter);
+    }
+
+    @OnClick(R.id.activity_quiz_save)
+    void onSave() {
+        Intent intent = new Intent(this, FinishQuizActivity.class);
+        String choosenUrl = mImages.get(mPager.getCurrentItem());
+        intent.putExtra(FinishQuizActivity.KEY_CHOOSEN_URL, choosenUrl);
+        intent.putExtra(FinishQuizActivity.KEY_QUIZ, mQuiz);
+        startActivity(intent);
+        finish();
+
     }
 
     @Override
@@ -74,5 +100,13 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            mTextToSpeech.setLanguage(Locale.US);
+            mTextToSpeech.setSpeechRate(0.6f);
+        }
     }
 }

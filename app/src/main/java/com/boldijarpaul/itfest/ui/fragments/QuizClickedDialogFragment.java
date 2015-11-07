@@ -4,6 +4,7 @@ package com.boldijarpaul.itfest.ui.fragments;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.speech.tts.TextToSpeech;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +15,19 @@ import android.widget.TextView;
 import com.boldijarpaul.itfest.R;
 import com.boldijarpaul.itfest.data.models.Quiz;
 
+import java.util.Locale;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class QuizClickedDialogFragment extends DialogFragment {
+public class QuizClickedDialogFragment extends DialogFragment implements TextToSpeech.OnInitListener {
 
 
     public static final String KEY_QUIZ = "KEYQUIZ";
-
+    private TextToSpeech mTextToSpeech;
     @Bind(R.id.fragment_quiz_clicked_dialog_yes)
     View mYesView;
     @Bind(R.id.fragment_quiz_clicked_dialog_no)
@@ -70,19 +73,37 @@ public class QuizClickedDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_quiz_clicked_dialog, container, false);
         ButterKnife.bind(this, view);
-
+        mTextToSpeech = new TextToSpeech(view.getContext(), this);
         mMessage.setText(createMessage());
         return view;
     }
 
+//    public void onPause() {
+//        if (mTextToSpeech != null) {
+//            mTextToSpeech.stop();
+//            mTextToSpeech.shutdown();
+//        }
+//        super.onPause();
+//    }
+
     private String createMessage() {
         Quiz quiz = (Quiz) getArguments().getSerializable(KEY_QUIZ);
         String result = "";
-        result += "This quiz is about " + quiz.name;
+        result += getActivity().getString(R.string.msg_quiz_about) + quiz.about;
         result += "\n";
-        result += "The quiz difficulty is " + quiz.difficulty.toLowerCase();
+        result += getActivity().getString(R.string.msg_quz_difficulty) + quiz.difficulty.toLowerCase();
+        result += "\n" + getActivity().getString(R.string.msg_please_click_left);
         return result;
     }
 
 
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            mTextToSpeech.setLanguage(Locale.US);
+            mTextToSpeech.setSpeechRate(0.6f);
+            mTextToSpeech.speak(createMessage(), TextToSpeech.QUEUE_FLUSH, null);
+        }
+
+    }
 }

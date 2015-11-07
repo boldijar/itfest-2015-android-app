@@ -7,6 +7,18 @@
     tools:ignore="MissingPrefix">
 
     <TextView
+        fontPath="fonts/Black.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Quiz info"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/fragment_quiz_clicked_dialog_message"
         fontPath="fonts/Black.ttf"
         android:layout_width="wrap_content"
@@ -14,7 +26,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:letterSpacing="0.3"
         android:textColor="@color/quizColor"
         android:textSize="20sp"
         tools:text="This quiz is about blabla" />
@@ -26,13 +37,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Start test?"
+        android:text="@string/msg_start_test"
         android:textColor="@color/quizColor"
         android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <TextView

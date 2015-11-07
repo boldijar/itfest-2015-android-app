@@ -8,8 +8,8 @@
     tools:context="com.boldijarpaul.itfest.ui.SplashActivity">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="145dp"
+        android:layout_width="100dp"
+        android:layout_height="95dp"
         android:layout_gravity="center"
         android:background="@drawable/ic_heart_big"/>
 

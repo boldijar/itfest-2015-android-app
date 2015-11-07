@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\itfest\duu-android\app\build\intermediates\exploded-aar\uk.co.chrisjenx\calligraphy\2.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e653e15e62e8a59ddd76cc7f827bf8bce38ae7bb">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\classes-360e747177351023a4ab8b8334bbf4836b9a0908.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\io.reactivex\rxandroid\0.25.0\866b539d3ae58abbd47880f243c02f914fec5cda\rxandroid-0.25.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="866b539d3ae58abbd47880f243c02f914fec5cda">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\rxandroid-0.25.0-96a784cd444ac6dbebf121fb1052f7b62955826c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.jakewharton.timber\timber\2.7.1\8fa5f11686c7a44386b41a6890e655cf2b7d5e70\timber-2.7.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8fa5f11686c7a44386b41a6890e655cf2b7d5e70">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\timber-2.7.1-3ea03ce2b38a6b4349dc1b4e31f16e85b41cff36.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\gson-2.3.1-af92dc1fb45882c956fa61246212efa2f5308518.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.3.0\2e7bc7033dc2c8423e661224171b3133fb155b28\okhttp-2.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\okhttp-2.3.0-03fb7d9fc5898a110b6ce12e3f1784a3ff950e3c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp-urlconnection\2.3.0\4f12ec1e1455909e1f0b8530c719c90b2d01745\okhttp-urlconnection-2.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="04f12ec1e1455909e1f0b8530c719c90b2d01745">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-2.3.0-e6ffe66ecd394e9169a2f8fef88183d8ed875f8c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\javax.inject-1-c13ea95fbf6669d6538ad29e335e9dc29c2619ba.jar" />
+    </item>
+    <item
+        jar="D:\itfest\duu-android\app\build\intermediates\exploded-aar\de.hdodenhof\circleimageview\1.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ac6948cce36f694f3eb3d73a135e298dc4b3527a">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\classes-577adbb6a001a05ce08791f3a3cc7ddd97825d47.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\1.9.0\a681c044244d9fc375198588297a39ba78028423\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\retrofit-1.9.0-d255a95fbc94199ea728ae4ca5b24dcbe7981cdc.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.google.dagger\dagger\2.0.1\1261dfca5bae89a866a2855552da26feab7f8fad\dagger-2.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1261dfca5bae89a866a2855552da26feab7f8fad">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\dagger-2.0.1-0b00ac7dad529ce779acd504ee7f488b00cca2b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-552d64341dfa2475c97d2f02e2e5b33dde7c8cea.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.3.0\1b355f73402020c5a0dcca58affc3ec3dfeabac1\okio-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\okio-1.3.0-8f78bf2367b16c5b0c3caefd78b0bbab65a7121e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.0.12\277d8a8184f92951355d8ddbcac855bf8f12bc5e\rxjava-1.0.12.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="277d8a8184f92951355d8ddbcac855bf8f12bc5e">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\rxjava-1.0.12-ac46190aea70ecb35512e66263ad6b1d82298933.jar" />
+    </item>
+    <item
+        jar="C:\Users\Browsing\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="D:\itfest\duu-android\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-87e3cab2f945a0e15f00d9ce410d046ff9d26b8a.jar" />
+    </item>
+
+</items>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmptyLayout">
+        <attr name="emptyLayoutEmptyText" format="string" />
+        <attr name="emptyLayoutErrorText" format="string" />
+    </declare-styleable>
+</resources>

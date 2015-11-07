@@ -69,7 +69,6 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
 
         setUpViews();
-        mTextToSpeech.speak(mQuiz.question, TextToSpeech.QUEUE_FLUSH, null);
     }
 
     private void setUpViews() {
@@ -107,6 +106,7 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
         if (status == TextToSpeech.SUCCESS) {
             mTextToSpeech.setLanguage(Locale.US);
             mTextToSpeech.setSpeechRate(0.6f);
+            mTextToSpeech.speak(mQuiz.question, TextToSpeech.QUEUE_FLUSH, null);
         }
     }
 }

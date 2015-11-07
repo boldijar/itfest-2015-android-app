@@ -69,6 +69,11 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
         return quizes.size();
     }
 
+    public void clear() {
+        quizes.clear();
+        notifyDataSetChanged();
+    }
+
     public static interface ItemListener {
         void onPlayClicked(Quiz quiz);
     }

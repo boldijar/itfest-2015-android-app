@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by Browsing on 11/3/2015.
+ * Created by Browsing on 11/7/2015.
  */
-public class PersonResponse {
-    @SerializedName("person")
-    public List<Person> people;
+public class AnswerResponse {
+    @SerializedName("answer")
+    public List<Answer> answers;
 }

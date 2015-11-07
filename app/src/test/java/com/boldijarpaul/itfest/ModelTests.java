@@ -1,5 +1,6 @@
 package com.boldijarpaul.itfest;
 
+import com.boldijarpaul.itfest.data.models.AnswerResponse;
 import com.boldijarpaul.itfest.data.models.QuizResponse;
 import com.google.gson.Gson;
 
@@ -12,8 +13,11 @@ import static org.junit.Assert.*;
  */
 public class ModelTests {
 
-    private String quizMock ="\n" +
+    private String answersMock = "\n" +
+            "{\"answer\":[{\"id\":\"1\",\"deviceId\":\"ffffffff-ba0a-7ecc-ffff-ffffef\",\"quizId\":\"1\",\"success\":\"1\"},{\"id\":\"2\",\"deviceId\":\"ffffffff-ba0a-7ecc-ffff-ffffef\",\"quizId\":\"2\",\"success\":\"1\"}]}";
+    private String quizMock = "\n" +
             "{\"quiz\":[{\"id\":\"1\",\"name\":\"Sport quiz\",\"difficulty\":\"Medium\",\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"2\",\"name\":\"Sport quiz\",\"difficulty\":\"Easy\",\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"3\",\"name\":\"Sport quiz\",\"difficulty\":\"Hard\",\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"4\",\"name\":\"Sport quiz\",\"difficulty\":\"Medium\",\"question\":\"Please select the cool image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"5\",\"name\":\"Sport quiz\",\"difficulty\":null,\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"6\",\"name\":\"Sport quiz\",\"difficulty\":null,\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"7\",\"name\":\"Sport quiz\",\"difficulty\":null,\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"8\",\"name\":\"Sport quiz\",\"difficulty\":null,\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null},{\"id\":\"9\",\"name\":\"Sport quiz\",\"difficulty\":null,\"question\":\"Please select the football image\",\"answer1\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer2\":\"http:\\/\\/localhost\\/api\\/image2.jpg\",\"answer3\":\"http:\\/\\/localhost\\/api\\/image1.jpg\",\"answer4\":null,\"answer5\":null,\"answer6\":null}]}";
+
     @Test
     public void QuizResponseTest() throws Exception {
         QuizResponse eventResponse = new Gson().fromJson(quizMock, QuizResponse.class);
@@ -29,5 +33,16 @@ public class ModelTests {
 
     }
 
+    @Test
+    public void AnswersResponseTest() throws Exception {
+        AnswerResponse answerResponse = new Gson().fromJson(answersMock, AnswerResponse.class);
+
+
+        assertEquals(answerResponse.answers.size(), 2);
+        assertEquals(answerResponse.answers.get(0).deviceId, "ffffffff-ba0a-7ecc-ffff-ffffef");
+        assertEquals(answerResponse.answers.get(1).success, false);
+
+
+    }
 
 }

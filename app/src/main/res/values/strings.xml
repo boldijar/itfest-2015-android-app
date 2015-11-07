@@ -24,6 +24,7 @@
     <string name="msg_wrong">Oops! You did not guessed the answer! The correct answer was: </string>
     <string name="msg_wrong_play">Oops! You did not guessed the answer! Be more careful next time!</string>
     <string name="msg_quiz_result">Quiz result</string>
+    <string name="msg_app_title">ITFest Learn App</string>
 
 
 </resources>

@@ -1,6 +1,7 @@
 package com.boldijarpaul.itfest.api;
 
 import com.boldijarpaul.itfest.BuildConfig;
+import com.boldijarpaul.itfest.api.services.AnswersService;
 import com.boldijarpaul.itfest.api.services.QuizesService;
 import com.boldijarpaul.itfest.helper.QuizHelper;
 import com.google.gson.Gson;
@@ -87,6 +88,12 @@ public class ApiModule {
     @Singleton
     QuizesService provideQuizesService(RestAdapter restAdapter) {
         return restAdapter.create(QuizesService.class);
+    }
+
+    @Provides
+    @Singleton
+    AnswersService provideAnswersService(RestAdapter restAdapter) {
+        return restAdapter.create(AnswersService.class);
     }
 
     @Provides

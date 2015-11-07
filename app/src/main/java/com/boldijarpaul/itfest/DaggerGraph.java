@@ -1,5 +1,6 @@
 package com.boldijarpaul.itfest;
 
+import com.boldijarpaul.itfest.presenter.presenters.AddAnswerPresenter;
 import com.boldijarpaul.itfest.presenter.presenters.QuizesPresenter;
 import com.boldijarpaul.itfest.ui.activities.QuizActivity;
 
@@ -14,4 +15,6 @@ public interface DaggerGraph {
     void inject(DaggerApp daggerApp);
 
     void inject(QuizActivity quizActivity);
+
+    void inject(AddAnswerPresenter addAnswerPresenter);
 }

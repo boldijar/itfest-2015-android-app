@@ -2,6 +2,7 @@ package com.boldijarpaul.itfest.ui.fragments;
 
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -73,6 +74,11 @@ public class QuizClickedDialogFragment extends DialogFragment implements TextToS
         return dialog;
     }
 
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        mTextToSpeech.stop();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

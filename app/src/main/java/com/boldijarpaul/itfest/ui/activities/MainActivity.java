@@ -2,6 +2,7 @@ package com.boldijarpaul.itfest.ui.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.boldijarpaul.itfest.R;
 import com.boldijarpaul.itfest.data.models.Quiz;
+import com.boldijarpaul.itfest.helper.EventsFeedRecyclerScrollListener;
 import com.boldijarpaul.itfest.presenter.presenters.QuizesPresenter;
 import com.boldijarpaul.itfest.presenter.views.QuizesView;
 import com.boldijarpaul.itfest.ui.adapters.QuizAdapter;
@@ -20,12 +22,14 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements QuizesView, QuizAdapter.ItemListener {
+public class MainActivity extends AppCompatActivity implements QuizesView, QuizAdapter.ItemListener, EventsFeedRecyclerScrollListener.ScrollListener, SwipeRefreshLayout.OnRefreshListener {
 
     @Bind(R.id.activity_main_toolbar)
     Toolbar mToolbar;
     @Bind(R.id.activity_main_recycler)
     RecyclerView mRecyclerView;
+    @Bind(R.id.activity_main_swipe_refresh_layout)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     private LinearLayoutManager mLinearLayoutManager;
     private QuizAdapter mQuizAdapter;
@@ -46,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
         if (mQuizesPresenter == null) {
             mQuizesPresenter = new QuizesPresenter(this, this);
         }
+        mRecyclerView.addOnScrollListener(new EventsFeedRecyclerScrollListener(mLinearLayoutManager, this));
         mQuizesPresenter.getQuizes();
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
     }
 
@@ -70,5 +76,18 @@ public class MainActivity extends AppCompatActivity implements QuizesView, QuizA
     @Override
     public void onPlayClicked(Quiz quiz) {
         QuizClickedDialogFragment.newInstance(quiz).show(getSupportFragmentManager(), "tag");
+    }
+
+    @Override
+    public void onReachedEndOfScroll() {
+        mQuizesPresenter.getQuizes();
+
+    }
+
+    @Override
+    public void onRefresh() {
+        mQuizAdapter.clear();
+        mQuizesPresenter.resetQuizes();
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 }

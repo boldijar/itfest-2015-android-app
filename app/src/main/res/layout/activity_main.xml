@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 </ScrollView>

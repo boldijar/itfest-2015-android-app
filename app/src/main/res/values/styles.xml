@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- android:textColorPrimary is the  color of the title text
+       in the Toolbar, in the Theme.AppCompat theme:  -->
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

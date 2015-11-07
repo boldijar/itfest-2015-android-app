@@ -19,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity implements QuizesView {
+public class MainActivity extends AppCompatActivity implements QuizesView, QuizAdapter.ItemListener {
 
     @Bind(R.id.activity_main_toolbar)
     Toolbar mToolbar;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements QuizesView {
     private void setUpRecycler() {
         mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mQuizAdapter = new QuizAdapter(this);
+        mQuizAdapter = new QuizAdapter(this,this);
         mRecyclerView.setAdapter(mQuizAdapter);
     }
 
@@ -64,5 +64,10 @@ public class MainActivity extends AppCompatActivity implements QuizesView {
     @Override
     public void onGetQuizes(List<Quiz> quizes) {
         mQuizAdapter.addQuizes(quizes);
+    }
+
+    @Override
+    public void onPlayClicked(Quiz quiz) {
+
     }
 }

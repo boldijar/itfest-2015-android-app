@@ -20,10 +20,13 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
 
     private Context mContext;
     private List<Quiz> quizes = new ArrayList<>();
+    private ItemListener mListener;
 
-    public QuizAdapter(Context mContext) {
+    public QuizAdapter(ItemListener mListener, Context mContext) {
+        this.mListener = mListener;
         this.mContext = mContext;
     }
+
 
     public void addQuizes(List<Quiz> newQuizes) {
         int newEventIndex = this.quizes.size();
@@ -41,10 +44,16 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
 
     @Override
     public void onBindViewHolder(QuizViewHolder holder, int position) {
-        Quiz quiz = quizes.get(position);
+        final Quiz quiz = quizes.get(position);
         holder.difficulty.setText(mContext.getString(R.string.msg_difficulty) + quiz.difficulty.toLowerCase());
         holder.name.setText(quiz.name);
         holder.difficultyImage.setImageResource(getImageResourceFromCategory(quiz.difficulty));
+        holder.play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onPlayClicked(quiz);
+            }
+        });
     }
 
     private int getImageResourceFromCategory(String difficulty) {
@@ -58,5 +67,9 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizViewHolder> {
     @Override
     public int getItemCount() {
         return quizes.size();
+    }
+
+    public static interface ItemListener {
+        void onPlayClicked(Quiz quiz);
     }
 }

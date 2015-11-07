@@ -1,5 +1,6 @@
 package com.boldijarpaul.itfest.ui.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements QuizesView {
 
@@ -54,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements QuizesView {
         mRecyclerView.setAdapter(mQuizAdapter);
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     public void onGetQuizes(List<Quiz> quizes) {

@@ -60,6 +60,7 @@
             android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/circle_selector"
+            android:clickable="true"
             android:padding="18dp"
             android:src="@drawable/ic_sound" />
     </LinearLayout>

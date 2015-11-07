@@ -31,6 +31,18 @@ public class Quiz implements Serializable{
     public String answer5;
     @SerializedName("answer6")
     public String answer6;
+    @SerializedName("details1")
+    public String details1;
+    @SerializedName("details2")
+    public String details2;
+    @SerializedName("details3")
+    public String details3;
+    @SerializedName("details4")
+    public String details4;
+    @SerializedName("details5")
+    public String details5;
+    @SerializedName("details6")
+    public String details6;
 
 
 }

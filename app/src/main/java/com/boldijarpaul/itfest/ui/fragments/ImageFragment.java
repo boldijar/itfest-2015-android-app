@@ -10,10 +10,12 @@ import android.widget.ImageView;
 
 import com.boldijarpaul.itfest.R;
 import com.boldijarpaul.itfest.api.ApiModule;
+import com.boldijarpaul.itfest.data.models.QuizInfo;
 import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Browsing on 11/7/2015.
@@ -26,17 +28,26 @@ public class ImageFragment extends Fragment {
     @Bind(R.id.item_image_play)
     View mPlay;
 
+    private PlayListener mListener;
+
+
+    public void setListener(PlayListener mListener) {
+        this.mListener = mListener;
+    }
+
     public static String KEY_URL = "KEYURL";
 
-    public static ImageFragment newInstance(String url) {
+    public static ImageFragment newInstance(QuizInfo quizInfo) {
 
         Bundle args = new Bundle();
-        args.putString(KEY_URL, url);
+        args.putSerializable(KEY_URL, quizInfo);
 
         ImageFragment fragment = new ImageFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
+    private QuizInfo mQuizInfo;
 
     @Nullable
     @Override
@@ -45,11 +56,29 @@ public class ImageFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
-        String url = getArguments().getString(KEY_URL);
-        url = url.replace("localhost", ApiModule.IP);
+        mQuizInfo = (QuizInfo) getArguments().getSerializable(KEY_URL);
+        String url = mQuizInfo.url.replace("localhost", ApiModule.IP);
         Picasso.with(view.getContext())
                 .load(url)
                 .into(mImage);
+
+        if (mQuizInfo.details == null) {
+            mPlay.setVisibility(View.INVISIBLE);
+        }
         return view;
+    }
+
+
+    @OnClick(R.id.item_image_play)
+    void clickPlay() {
+        if (mQuizInfo.details != null) {
+            if (mListener != null) {
+                mListener.onPlayText(mQuizInfo.details);
+            }
+        }
+    }
+
+    public interface PlayListener {
+        void onPlayText(String text);
     }
 }

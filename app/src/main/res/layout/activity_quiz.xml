@@ -7,12 +7,7 @@
     tools:context="com.boldijarpaul.itfest.ui.activities.QuizActivity"
     tools:ignore="MissingPrefix">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/activity_quiz_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,7 +16,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="?attr/actionBarSize"
             android:orientation="vertical">
 
             <TextView
@@ -51,14 +45,14 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/selector_rectangle"
                 android:clickable="true"
-                android:paddingBottom="10dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:paddingTop="10dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="60dp"
+                android:paddingRight="60dp"
+                android:paddingTop="12dp"
                 android:text="@string/msg_save"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textSize="22sp" />
         </LinearLayout>
     </ScrollView>
 

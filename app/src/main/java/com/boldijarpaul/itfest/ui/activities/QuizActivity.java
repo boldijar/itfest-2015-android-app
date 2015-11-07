@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.boldijarpaul.itfest.DaggerApp;
 import com.boldijarpaul.itfest.R;
 import com.boldijarpaul.itfest.data.models.Quiz;
+import com.boldijarpaul.itfest.data.models.QuizInfo;
 import com.boldijarpaul.itfest.helper.QuizHelper;
 import com.boldijarpaul.itfest.ui.adapters.ImageFragmentPagerAdapter;
 
@@ -27,12 +29,12 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnInitListener {
 
-    @Bind(R.id.activity_quiz_toolbar)
-    Toolbar mToolbar;
+
     @Bind(R.id.activity_quiz_question)
     TextView mQuestion;
     @Bind(R.id.activity_quiz_viewpager)
@@ -48,7 +50,7 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
     @Inject
     QuizHelper mQuizHelper;
     private FragmentPagerAdapter mAdapter;
-    private List<String> mImages;
+    private List<QuizInfo> mImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,6 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
         mTextToSpeech = new TextToSpeech(this, this);
 
         ButterKnife.bind(this);
-        setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (getIntent().getSerializableExtra(KEY_QUIZ) == null) {
@@ -72,8 +73,8 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
     }
 
     private void setUpViews() {
-        mImages = mQuizHelper.quizToImagesArray(mQuiz);
-        mAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(), mImages);
+        mImages = mQuizHelper.quizToQuizInfoArray(mQuiz);
+        mAdapter = new ImageFragmentPagerAdapter(getSupportFragmentManager(), mImages, this);
         mQuestion.setText(mQuiz.question);
         mPager.setAdapter(mAdapter);
     }
@@ -81,7 +82,7 @@ public class QuizActivity extends AppCompatActivity implements TextToSpeech.OnIn
     @OnClick(R.id.activity_quiz_save)
     void onSave() {
         Intent intent = new Intent(this, FinishQuizActivity.class);
-        String choosenUrl = mImages.get(mPager.getCurrentItem());
+        String choosenUrl = mImages.get(mPager.getCurrentItem()).url;
         intent.putExtra(FinishQuizActivity.KEY_CHOOSEN_URL, choosenUrl);
         intent.putExtra(FinishQuizActivity.KEY_QUIZ, mQuiz);
         startActivity(intent);
